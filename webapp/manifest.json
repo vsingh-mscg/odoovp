@@ -18,8 +18,7 @@
 					"odataVersion": "2.0",
 					"localUri": "localService/Z_EWM_OUTBDELIVORD_CDS_CDS/metadata.xml",
 					"annotations": [
-						"annotation0",
-						"Z_EWM_OUTBDELIVORD_CDS_CDS_VAN"
+						"annotation0"
 					]
 				}
 			},
@@ -28,13 +27,6 @@
 				"uri": "annotations/annotation0.xml",
 				"settings": {
 					"localUri": "annotations/annotation0.xml"
-				}
-			},
-			"Z_EWM_OUTBDELIVORD_CDS_CDS_VAN": {
-				"uri": "annotations/Z_EWM_OUTBDELIVORD_CDS_CDS_VAN.xml",
-				"type": "ODataAnnotation",
-				"settings": {
-					"localUri": "annotations/Z_EWM_OUTBDELIVORD_CDS_CDS_VAN.xml"
 				}
 			}
 		},
