@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:Reference
+		Uri="https://webidecp-p1942798766trial.dispatcher.hanatrial.ondemand.com/destinations/SAPMSCG/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="Z_EWM_OUTBDELIVORD_CDS_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="I_EWM_BusinessPartnerType" sap:label="EWM Business Partner" sap:content-version="1">
+				<Key><PropertyRef Name="BusinessPartnerUUID"/></Key><Property Name="BusinessPartnerUUID" Type="Edm.Guid" Nullable="false" sap:label="BP GUID"/><Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner"/><Property Name="BusinessPartnerName" Type="Edm.String" MaxLength="40" sap:label="Name 1"/><Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/></EntityType>
+			<EntityType Name="Z_EWM_OutbDelivOrd_CDSType" sap:semantics="aggregate" sap:label="EWM Outbound Delivery Order CDS" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false"/><Property Name="OutboundDeliveryOrderUUID" Type="Edm.Binary" sap:aggregation-role="dimension" sap:label="Document ID"/><Property Name="OutboundDeliveryOrderItemUUID" Type="Edm.Binary" sap:aggregation-role="dimension" sap:label="Item ID"/><Property Name="Product" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Product"/><Property Name="Warehouse" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Warehouse Number"/><Property Name="OutboundDeliveryOrder" Type="Edm.String" MaxLength="35" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Document Number"/><Property Name="Incoterm" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Incoterms"/><Property Name="Route" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/><Property Name="NumOfDocs" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="Documents" sap:filterable="false"/><Property Name="DeliveriesDue" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Category"/><Property Name="DeliveryDay" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase"/><Property Name="ByStatus" Type="Edm.String" MaxLength="23" sap:aggregation-role="dimension" sap:display-format="UpperCase"/><Property Name="SortStatus" Type="Edm.Byte" sap:aggregation-role="dimension"/><Property Name="GrossWeight" Type="Edm.Decimal" Precision="31" Scale="14" sap:aggregation-role="measure" sap:filterable="false"/><Property Name="GrossWeightUnit" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase"/><Property Name="GrossVolume" Type="Edm.Decimal" Precision="31" Scale="14" sap:aggregation-role="measure" sap:filterable="false"/><Property Name="GrossVolumeUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase"/><Property Name="GoodsIssueStatus" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Status Value"/><NavigationProperty Name="to_OutboundDeliveryOrderHeader" Relationship="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_C26F72E9605D84258279A5DAEB7F5942"
+					FromRole="FromRole_assoc_C26F72E9605D84258279A5DAEB7F5942" ToRole="ToRole_assoc_C26F72E9605D84258279A5DAEB7F5942"/><NavigationProperty Name="to_warehouse" Relationship="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB"
+					FromRole="FromRole_assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB" ToRole="ToRole_assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB"/></EntityType>
+			<EntityType Name="I_EWM_WarehouseNumberType" sap:label="EWM Warehouse Number" sap:content-version="1">
+				<Key><PropertyRef Name="Warehouse"/></Key><Property Name="Warehouse" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="Warehouse_Text"
+					sap:label="Warehouse Number"/><Property Name="Warehouse_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_EWM_WarehouseTimezoneType" sap:label="EWM Warehouse Timezone" sap:content-version="1">
+				<Key><PropertyRef Name="WarehouseLocationUUID"/></Key><Property Name="WarehouseLocationUUID" Type="Edm.Guid" Nullable="false" sap:label="GUID 16"/><Property Name="TimeZoneID" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Time Zone"/></EntityType>
+			<EntityType Name="Z_EWM_OutbDelivOrdHdrType" sap:label="EWM Outbound Delivery Order Header" sap:content-version="1">
+				<Key><PropertyRef Name="OutboundDeliveryOrderUUID"/></Key><Property Name="DeliveryType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Document Type"/><Property Name="WrhsTmznCreationDateTime" Type="Edm.Decimal" Precision="15" Scale="0" sap:label="Created On"/><Property Name="WrhsTmZnCreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date"/><Property Name="WrhsTmznCreationTime" Type="Edm.Time" Precision="0" sap:label="Time"/><Property Name="CreationDateTime" Type="Edm.Decimal" Precision="15" Scale="0" sap:label="Created On"/><Property Name="OutboundDeliveryOrder" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Document Number"/><Property Name="Incoterm" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Incoterms"/><Property Name="WarehouseLocationUUID" Type="Edm.Binary" sap:label="Location ID" sap:value-list="standard"/><Property Name="OutboundDeliveryOrderUUID" Type="Edm.Binary" Nullable="false" sap:label="Document ID"/><Property Name="ShipToPartyUUID" Type="Edm.Binary" sap:label="Partner ID" sap:value-list="standard"/><Property Name="CarrierUUID" Type="Edm.Binary" sap:label="Partner ID" sap:value-list="standard"/><Property Name="Route" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Route"/><Property Name="MeansOfTransport" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Means of Trans. ID"/><NavigationProperty Name="to_BPCarrier" Relationship="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_78C5CF523DF92A11761E54F085E2D0E9"
+					FromRole="FromRole_assoc_78C5CF523DF92A11761E54F085E2D0E9" ToRole="ToRole_assoc_78C5CF523DF92A11761E54F085E2D0E9"/><NavigationProperty Name="to_BPShipTo" Relationship="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_81240228F0017E9FDA468924454E53BC"
+					FromRole="FromRole_assoc_81240228F0017E9FDA468924454E53BC" ToRole="ToRole_assoc_81240228F0017E9FDA468924454E53BC"/><NavigationProperty Name="to_WarehouseTimezone" Relationship="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_C03443D05C9B83C2EBBA74D5E3302914"
+					FromRole="FromRole_assoc_C03443D05C9B83C2EBBA74D5E3302914" ToRole="ToRole_assoc_C03443D05C9B83C2EBBA74D5E3302914"/></EntityType>
+			<Association Name="assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB" sap:content-version="1"><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrd_CDSType" Multiplicity="1" Role="FromRole_assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB"/><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.I_EWM_WarehouseNumberType" Multiplicity="0..1" Role="ToRole_assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB"/></Association>
+			<Association Name="assoc_C26F72E9605D84258279A5DAEB7F5942" sap:content-version="1"><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrd_CDSType" Multiplicity="1" Role="FromRole_assoc_C26F72E9605D84258279A5DAEB7F5942"/><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrdHdrType" Multiplicity="0..1" Role="ToRole_assoc_C26F72E9605D84258279A5DAEB7F5942"/></Association>
+			<Association Name="assoc_78C5CF523DF92A11761E54F085E2D0E9" sap:content-version="1"><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrdHdrType" Multiplicity="1" Role="FromRole_assoc_78C5CF523DF92A11761E54F085E2D0E9"/><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.I_EWM_BusinessPartnerType" Multiplicity="0..1" Role="ToRole_assoc_78C5CF523DF92A11761E54F085E2D0E9"/></Association>
+			<Association Name="assoc_81240228F0017E9FDA468924454E53BC" sap:content-version="1"><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrdHdrType" Multiplicity="1" Role="FromRole_assoc_81240228F0017E9FDA468924454E53BC"/><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.I_EWM_BusinessPartnerType" Multiplicity="0..1" Role="ToRole_assoc_81240228F0017E9FDA468924454E53BC"/></Association>
+			<Association Name="assoc_C03443D05C9B83C2EBBA74D5E3302914" sap:content-version="1"><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrdHdrType" Multiplicity="1" Role="FromRole_assoc_C03443D05C9B83C2EBBA74D5E3302914"/><End Type="Z_EWM_OUTBDELIVORD_CDS_CDS.I_EWM_WarehouseTimezoneType" Multiplicity="0..1" Role="ToRole_assoc_C03443D05C9B83C2EBBA74D5E3302914"/></Association>
+			<EntityContainer Name="Z_EWM_OUTBDELIVORD_CDS_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="I_EWM_BusinessPartner" EntityType="Z_EWM_OUTBDELIVORD_CDS_CDS.I_EWM_BusinessPartnerType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:content-version="1"/><EntitySet Name="Z_EWM_OutbDelivOrd_CDS" EntityType="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrd_CDSType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:content-version="1"/><EntitySet Name="I_EWM_WarehouseNumber" EntityType="Z_EWM_OUTBDELIVORD_CDS_CDS.I_EWM_WarehouseNumberType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:content-version="1"/><EntitySet Name="I_EWM_WarehouseTimezone" EntityType="Z_EWM_OUTBDELIVORD_CDS_CDS.I_EWM_WarehouseTimezoneType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:content-version="1"/><EntitySet Name="Z_EWM_OutbDelivOrdHdr" EntityType="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrdHdrType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+				<AssociationSet Name="assoc_C26F72E9605D84258279A5DAEB7F5942"
+					Association="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_C26F72E9605D84258279A5DAEB7F5942" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Z_EWM_OutbDelivOrd_CDS" Role="FromRole_assoc_C26F72E9605D84258279A5DAEB7F5942"/><End EntitySet="Z_EWM_OutbDelivOrdHdr" Role="ToRole_assoc_C26F72E9605D84258279A5DAEB7F5942"/></AssociationSet>
+				<AssociationSet Name="assoc_78C5CF523DF92A11761E54F085E2D0E9"
+					Association="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_78C5CF523DF92A11761E54F085E2D0E9" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Z_EWM_OutbDelivOrdHdr" Role="FromRole_assoc_78C5CF523DF92A11761E54F085E2D0E9"/><End EntitySet="I_EWM_BusinessPartner" Role="ToRole_assoc_78C5CF523DF92A11761E54F085E2D0E9"/></AssociationSet>
+				<AssociationSet Name="assoc_C03443D05C9B83C2EBBA74D5E3302914"
+					Association="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_C03443D05C9B83C2EBBA74D5E3302914" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Z_EWM_OutbDelivOrdHdr" Role="FromRole_assoc_C03443D05C9B83C2EBBA74D5E3302914"/><End EntitySet="I_EWM_WarehouseTimezone" Role="ToRole_assoc_C03443D05C9B83C2EBBA74D5E3302914"/></AssociationSet>
+				<AssociationSet Name="assoc_81240228F0017E9FDA468924454E53BC"
+					Association="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_81240228F0017E9FDA468924454E53BC" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Z_EWM_OutbDelivOrdHdr" Role="FromRole_assoc_81240228F0017E9FDA468924454E53BC"/><End EntitySet="I_EWM_BusinessPartner" Role="ToRole_assoc_81240228F0017E9FDA468924454E53BC"/></AssociationSet>
+				<AssociationSet Name="assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB"
+					Association="Z_EWM_OUTBDELIVORD_CDS_CDS.assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Z_EWM_OutbDelivOrd_CDS" Role="FromRole_assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB"/><End EntitySet="I_EWM_WarehouseNumber" Role="ToRole_assoc_AF2583A0B11FC08E9D3B7EEA0E7376DB"/></AssociationSet>
+			</EntityContainer>
+			<Annotations Target="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrdHdrType/WarehouseLocationUUID"
+				xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="EWM Warehouse Timezone"/><PropertyValue Property="CollectionPath" String="I_EWM_WarehouseTimezone"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="WarehouseLocationUUID"/><PropertyValue Property="ValueListProperty" String="WarehouseLocationUUID"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrdHdrType/ShipToPartyUUID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="EWM Business Partner"/><PropertyValue Property="CollectionPath" String="I_EWM_BusinessPartner"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="ShipToPartyUUID"/><PropertyValue Property="ValueListProperty" String="BusinessPartnerUUID"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="BusinessPartnerName"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Z_EWM_OUTBDELIVORD_CDS_CDS.Z_EWM_OutbDelivOrdHdrType/CarrierUUID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="EWM Business Partner"/><PropertyValue Property="CollectionPath" String="I_EWM_BusinessPartner"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="CarrierUUID"/><PropertyValue Property="ValueListProperty" String="BusinessPartnerUUID"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="BusinessPartnerName"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations><atom:link rel="self"
+				href="https://webidecp-p1942798766trial.dispatcher.hanatrial.ondemand.com/destinations/SAPMSCG/sap/opu/odata/sap/Z_EWM_OUTBDELIVORD_CDS_CDS/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-p1942798766trial.dispatcher.hanatrial.ondemand.com/destinations/SAPMSCG/sap/opu/odata/sap/Z_EWM_OUTBDELIVORD_CDS_CDS/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

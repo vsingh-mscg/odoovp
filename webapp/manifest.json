@@ -1,0 +1,179 @@
+{
+	"_version": "1.7.0",
+	"start_url": "start.html",
+	"sap.app": {
+		"id": "com.ui.ewmodoovpapp",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{app_title}}",
+		"description": "{{app_description}}",
+		"dataSources": {
+			"Z_EWM_OUTBDELIVORD_CDS_CDS": {
+				"uri": "/sap/opu/odata/sap/Z_EWM_OUTBDELIVORD_CDS_CDS/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/Z_EWM_OUTBDELIVORD_CDS_CDS/metadata.xml",
+					"annotations": [
+						"annotation0",
+						"Z_EWM_OUTBDELIVORD_CDS_CDS_VAN"
+					]
+				}
+			},
+			"annotation0": {
+				"type": "ODataAnnotation",
+				"uri": "annotations/annotation0.xml",
+				"settings": {
+					"localUri": "annotations/annotation0.xml"
+				}
+			},
+			"Z_EWM_OUTBDELIVORD_CDS_CDS_VAN": {
+				"uri": "annotations/Z_EWM_OUTBDELIVORD_CDS_CDS_VAN.xml",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "annotations/Z_EWM_OUTBDELIVORD_CDS_CDS_VAN.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "OVP.cardtemplate",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.ovp": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"@i18n": {
+				"preload": true,
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"Z_EWM_OUTBDELIVORD_CDS_CDS": {
+				"dataSource": "Z_EWM_OUTBDELIVORD_CDS_CDS",
+				"settings": {
+					"defaultCountMode": "Inline"
+				}
+			}
+		},
+		"extends": {
+			"extensions": {}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	},
+	"sap.ovp": {
+		"globalFilterModel": "Z_EWM_OUTBDELIVORD_CDS_CDS",
+		"globalFilterEntityType": "Z_EWM_OutbDelivOrd_CDSType",
+		"containerLayout": "resizable",
+		"enableLiveFilter": false,
+		"considerAnalyticalParameters": false,
+		"cards": {
+			"card00": {
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{card00_title}}",
+					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
+					"addODataSelect": true,
+					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#late"
+				}
+			},
+			"card01": {
+				"model": "Z_EWM_OUTBDELIVORD_CDS_CDS",
+				"template": "sap.ovp.cards.table",
+				"settings": {
+					"title": "{{card01_title}}",
+					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
+					"addODataSelect": true,
+					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#byStatus",
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#byStatus"
+				}
+			},
+			"card02": {
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{card02_title}}",
+					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
+					"addODataSelect": true,
+					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#byDays"
+				}
+			},
+			"card03": {
+				"model": "Z_EWM_OUTBDELIVORD_CDS_CDS",
+				"template": "sap.ovp.cards.table",
+				"settings": {
+					"title": "{{card03_title}}",
+					"subTitle": "{{card03_subTitle}}",
+					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
+					"listFlavor": "standard",
+					"listType": "condensed",
+					"sortBy": "Incoterm",
+					"sortOrder": "ascending",
+					"addODataSelect": true,
+					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#incoterm"
+				}
+			},
+			"card04": {
+				"model": "Z_EWM_OUTBDELIVORD_CDS_CDS",
+				"template": "sap.ovp.cards.table",
+				"settings": {
+					"title": "{{card04_title}}",
+					"subTitle": "{{card04_subTitle}}",
+					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
+					"listFlavor": "standard",
+					"listType": "condensed",
+					"sortBy": "Route",
+					"sortOrder": "ascending",
+					"addODataSelect": true,
+					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#route"
+				}
+			},
+			"card05": {
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{card05_title}}",
+					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
+					"addODataSelect": true,
+					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#byWeight"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

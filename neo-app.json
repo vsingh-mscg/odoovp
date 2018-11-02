@@ -1,0 +1,35 @@
+{
+  "welcomeFile": "index.html",
+  "routes": [
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "SAPMSCG",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "SAPMSCG"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "preferLocal": true,
+        "entryPath": "/resources",
+        "version": "1.52.22"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.52.22"
+      },
+      "description": "SAPUI5 Test Resources"
+    }
+  ]
+}
