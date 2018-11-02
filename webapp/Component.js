@@ -14,9 +14,6 @@
 	sap.ovp.app.Component.extend("com.ui.ewmodoovpapp.Component", {
 		metadata: {
 			manifest: "json"
-		},
-		init: function() {
-			sap.ovp.app.Component.prototype.init.apply(this, arguments);
 		}
 	});
 }());
