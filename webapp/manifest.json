@@ -93,7 +93,7 @@
 		"globalFilterModel": "Z_EWM_OUTBDELIVORD_CDS_CDS",
 		"globalFilterEntityType": "Z_EWM_OutbDelivOrd_CDSType",
 		"containerLayout": "resizable",
-		"enableLiveFilter": false,
+		"enableLiveFilter": true,
 		"considerAnalyticalParameters": false,
 		"cards": {
 			"card00": {
@@ -125,6 +125,7 @@
 					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
 					"addODataSelect": true,
 					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#byDays",
 					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#byDays"
 				}
 			},
@@ -166,7 +167,8 @@
 					"title": "{{card05_title}}",
 					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
 					"addODataSelect": true,
-					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
+					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byWeight",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#byWeight",
 					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#byWeight"
 				}
 			}

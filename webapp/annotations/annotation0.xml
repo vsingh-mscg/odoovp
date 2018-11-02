@@ -76,7 +76,7 @@
 				</Annotation>
 				<Annotation Term="UI.Chart" Qualifier="byWeight">
 					<Record Type="UI.ChartDefinitionType">
-						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
 						<PropertyValue Property="MeasureAttributes">
 							<Collection>
 								<Record Type="UI.ChartMeasureAttributeType">
@@ -106,6 +106,63 @@
 								<PropertyPath>SortStatus</PropertyPath>
 							</Collection>
 						</PropertyValue>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType">
+									<PropertyValue Property="Property" PropertyPath="SortStatus"/>
+									<PropertyValue Property="Descending" Bool="false"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.LineItem#byStatus</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="byDays">
+					<Record Type="UI.PresentationVariantType">
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>DeliveryDaySort</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType">
+									<PropertyValue Property="Property" PropertyPath="DeliveryDaySort"/>
+									<PropertyValue Property="Descending" Bool="false"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.Chart#byDays</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="byWeight">
+					<Record Type="UI.PresentationVariantType">
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>DeliveryDaySort</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType">
+									<PropertyValue Property="Property" PropertyPath="DeliveryDaySort"/>
+									<PropertyValue Property="Descending" Bool="false"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.Chart#byWeight</AnnotationPath>
+							</Collection>
+						</PropertyValue>
 					</Record>
 				</Annotation>
 				<Annotation Term="UI.SelectionVariant" Qualifier="byStatus">
@@ -128,15 +185,74 @@
 						</PropertyValue>
 					</Record>
 				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="byWeight">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="GoodsIssueStatus"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="1"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="DeliveryDay"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="M"/>
+											</Record>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="T"/>
+											</Record>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="W"/>
+											</Record>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Th"/>
+											</Record>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="F"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
 				<Annotation Term="UI.LineItem" Qualifier="byStatus">
 					<Collection>
 						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SortStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+							<Annotation Term="UI.Hidden" Bool="true"/>
+						</Record>
+						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="ByStatus"/>
 							<PropertyValue Property="Label" String="Status"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="NumOfDocs"/>
 							<PropertyValue Property="Label" String="No. of Documents"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
 						</Record>
 					</Collection>
 				</Annotation>
