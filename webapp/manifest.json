@@ -92,6 +92,7 @@
 				"template": "sap.ovp.cards.charts.analytical",
 				"settings": {
 					"title": "{{card00_title}}",
+					"subTitle": "{{card00_subTitle}}",
 					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
 					"addODataSelect": true,
 					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
@@ -106,7 +107,6 @@
 					"entitySet": "Z_EWM_OutbDelivOrd_CDS",
 					"addODataSelect": true,
 					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#byStatus",
-					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#byStatus",
 					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#byStatus"
 				}
 			},
