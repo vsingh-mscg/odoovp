@@ -87,6 +87,7 @@
 		"containerLayout": "resizable",
 		"enableLiveFilter": false,
 		"considerAnalyticalParameters": false,
+		"refreshIntervalInMinutes": 1,
 		"cards": {
 			"card00": {
 				"template": "sap.ovp.cards.charts.analytical",
