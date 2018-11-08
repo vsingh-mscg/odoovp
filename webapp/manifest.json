@@ -85,7 +85,7 @@
 		"globalFilterModel": "Z_EWM_OUTBDELIVORD_CDS_CDS",
 		"globalFilterEntityType": "Z_EWM_OutbDelivOrd_CDSType",
 		"containerLayout": "resizable",
-		"enableLiveFilter": true,
+		"enableLiveFilter": false,
 		"considerAnalyticalParameters": false,
 		"cards": {
 			"card00": {
