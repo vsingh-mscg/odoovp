@@ -1,31 +1,32 @@
 {
     "application": {
         "id": "",
-        "title": "com.ui.ewmodoovpapp.ewmodoovpapp",
+        "title": "com.ui.ewmodoovpapp.odoovp",
+        "description": "Outbound Delivery Order's Overview",
         "type": "SAP_UI5_Component",
         "componentUrl": "/",
-        "appUrl": "#ewmodoovpapp-Display",
+        "appUrl": "#odoovp-Display",
         "navigationComponentName": "com.ui.ewmodoovpapp",
-        "intentSemanticObject": "ewmodoovpapp",
+        "intentSemanticObject": "odoovp",
         "intentAction": "Display",
-        "html5ApplicationName": "ewmodoovpapp",
+        "html5ApplicationName": "odoovp",
         "HCPParentApplicationName": ""
     },
     "assignment": {
         "groups": [
-            "e2f64352-65f9-4d25-86bd-658fb8921f3d"
+            "ba52dcd3-629a-492a-a2d3-4dddebd015a7"
         ],
         "contentPackages": [
-            "3ebdbfd1-3d4b-4ab7-91e7-5129a3064514"
+            "e1aa46eb-31af-4588-8626-99f9de5f7df0"
         ],
         "categories": []
     },
     "tile": {
         "type": "StaticTile",
-        "title": "Outbound Delivery Orders",
-        "subtitle": "Overview",
-        "searchKeywords": "Outbound Delivery Orders,Overview",
-        "displayIconUrl": "sap-icon://detail-view",
+        "title": "Outbound Delivery Order's Overview",
+        "subtitle": "",
+        "searchKeywords": "Outbound Delivery Order's Overview,",
+        "displayIconUrl": "sap-icon://overview-chart",
         "displayInfoText": "",
         "size": "1x1",
         "serviceURL": "",

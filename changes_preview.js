@@ -52,7 +52,7 @@ jQuery.extend(sap.ui.fl.FakeLrepConnector.prototype, {
 					//<MTA-HTML5-MODULE-NAME>/webapp/changes/<change-file>
 					var sChangesRelativePathIndex = sFilePath.indexOf("webapp/changes");
 					if (sChangesRelativePathIndex != -1 && sFilePath.endsWith(".change")) {
-						if (sChangesRelativePathIndex != 0 && !sFilePath.startsWith("ewmodoovpapp")) {
+						if (sChangesRelativePathIndex != 0 && !sFilePath.startsWith("odoovp")) {
 							return true;
 						}
 						sFilePath = sFilePath.slice(sChangesRelativePathIndex);
